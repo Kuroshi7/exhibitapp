@@ -1,0 +1,14 @@
+.footer{
+    /*altura do footer*/
+    height: 230px;
+    /*item ao lado do outro*/
+    display: flex;
+    /*item abaixo do outro*/
+    flex-direction: column;
+    /*alinhar ao centro*/
+    align-items: center;
+    /*vertical/horizontal*/
+    justify-content: center;
+    /*cor do fundo*/
+    background-color: #edf3f6;
+}
