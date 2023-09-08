@@ -12,6 +12,8 @@ import { useState, useEffect } from 'react';
 import { useAutenticacao } from './hook/useAutenticacao';
 //mapeia autenticacao do usuario
 import { onAuthStateChanged } from 'firebase/auth';
+import Dashboard from './pages/Dashboard/Dashboard';
+import CreatePost from './pages/CreatePost/CreatePost';
 function App() {
   //logica de monitoramento de estado do usuario
   //aqui engloba todos os elementos da pagina
@@ -44,8 +46,14 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path= '/' element={<About/>} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element=
+          {!user ? <Login/>: <Navigate to= "/"/>} />
+          <Route path='/register' element=
+          {!user ? <Register/>: <Navigate to ="/"/>}/>
+          <Route path='/Posts/create' element=
+          { user ? <CreatePost/>: <Navigate to = "/login"/>}/>
+          <Route path='/dashboard' element= 
+          {user ? <Dashboard/>: <Navigate to = "/login"/>}/>
         </Routes>
         
       </div>

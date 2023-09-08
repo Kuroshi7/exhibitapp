@@ -57,7 +57,7 @@ label span{
 input, textarea{
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px;
+  border-bottom: 1px solid #ccc;
   padding: .8em 0;
   background-color: transparent;
 }
@@ -82,10 +82,10 @@ button[disabled]{
   background-color: #aaa;
 }
 
-.container .error{
+.error{
   color: #721c24;
   background-color: #f8d7da;
-  border: 1pc solid #f5c6cb;
+  border: 1px solid #f5c6cb;
   padding: 5px;
   border-radius: 5px;
 }

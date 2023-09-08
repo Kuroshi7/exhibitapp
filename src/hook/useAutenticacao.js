@@ -3,8 +3,10 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signOut,
     updateProfile,
-    signOut
+    
+    
 } from "firebase/auth"
 import { useState,useEffect } from "react";
 export const useAutenticacao = () =>{
@@ -20,6 +22,7 @@ export const useAutenticacao = () =>{
             return;
         }
     }
+    //Register
     const createUsuario = async (data) => {
         //async segue BD externo demora mais tempo para voltar que JSON. garante Clean Up ao criar usuario
         validarIfIsCancelled()
@@ -65,8 +68,46 @@ export const useAutenticacao = () =>{
         return ()=> setCancelarAposdarCerto (true);
     },[])
 
+    //Funçao logout. Apos definiçao das variaveis auth e funçao de memory leak
+    const logout = async () => {
+        //evitar memory leak
+        validarIfIsCancelled();
+        //logout funçao do firebase
+        signOut (auth);
+    }
+
+    //login entrada do sistema
+    const login = async (data) => {
+        //evitar memory leak
+        validarIfIsCancelled();
+        setError (false)
+        setLoading (true)
+        try{
+            await signInWithEmailAndPassword
+            (auth,data.email,data.password)
+            setLoading(false)
+        } catch (catEror) {
+            let erroAPI
+            //se houver termo Password na mensagem
+            if (catEror.message.includes("user-not-found")){
+                erroAPI ="usuário não cadastrado."
+            }else {
+                if (catEror.message.includes("wrong-password")){
+                    //Usuario ja existe
+                    erroAPI ="Senha incorreta."
+                }else{
+                    erroAPI ="Ocorreu um erro no login, tente mais tarde."
+                }
+            }
+            setError(erroAPI)
+            setLoading(false)
+        }
+    }
+    
+    
+
 
     return{
-        auth,createUsuario,error,loading
+        auth,createUsuario,error,loading,logout,login,
     }
 };
