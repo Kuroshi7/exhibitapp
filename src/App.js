@@ -42,7 +42,7 @@ function App() {
      <AuthProviderFac value={{user}}>
      <BrowserRouter>
      <Navbar />
-      <div clasName='container'>
+      <div className='container'>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path= '/' element={<About/>} />
@@ -50,7 +50,7 @@ function App() {
           {!user ? <Login/>: <Navigate to= "/"/>} />
           <Route path='/register' element=
           {!user ? <Register/>: <Navigate to ="/"/>}/>
-          <Route path='/Posts/create' element=
+          <Route path='/Post/create' element=
           { user ? <CreatePost/>: <Navigate to = "/login"/>}/>
           <Route path='/dashboard' element= 
           {user ? <Dashboard/>: <Navigate to = "/login"/>}/>

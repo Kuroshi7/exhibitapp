@@ -27,7 +27,7 @@ const Navbar = () => {
             </li>
             {user && (<>
             <li>
-                <NavLink to = "/post/create" clasName ={({isActive}) => (isActive ? style.active:"") }>Nova publicação</NavLink>
+                <NavLink to = "/post/create" className ={({isActive}) => (isActive ? style.active:"") }>Nova publicação</NavLink>
             </li>
             <li>
                 <NavLink to = "/dashboard" className={({isActive})=> (isActive ? style.active:"")}>Dashboard</NavLink>
