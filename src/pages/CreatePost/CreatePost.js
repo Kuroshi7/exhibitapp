@@ -5,6 +5,8 @@ import { useState } from 'react'
 import {useNavigaState} from 'react'
 //3 pegar usuario e atrelalo ao post para o Dashboard
 import { useAuthValueFac } from '../../context/AuthContext'
+
+//Firestore DB
 import { useInserirPost } from '../../hook/useInserirPost'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,38 +19,41 @@ const CreatePost = () =>{
     //Array por isso []
     const [tagPost,setTagPost] =useState([]);
     let [erroLocal,setErroLocal] =useState("");
+    //firestore DB
     const{inserirDocumento, resposta}= useInserirPost("posts")
     const {user} = useAuthValueFac()
     const navigate = useNavigate();
+    //05 criar funçao submeter o formulario.
+
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         //Firestore DB limpar erros
-        erroLocal= ""
+        erroLocal = ""
 
         //Firestore DB validar URL da imagem
         try {
-            console.log ("URL:", imagem)
+            console.log ("URL:" , imagem)
             new URL (imagem);
 
         } catch (error) {
-            setErroLocal ("Aimagem precisa ser uma URL.");
+            setErroLocal ("A imagem precisa ser uma URL.");
             erroLocal = "A imagem precisa ser uma URL."
             console.log("Gerou Erro:")
         }
 
         //caso alguma validaçao esteja com erro nao continuara a inclusão.
-        console.log ("Antes IF erroLocal:" +erroLocal)
+        console.log ("Antes IF erroLocal:" + erroLocal)
         if (erroLocal) {
             console.log ("Entrou no if do return:")
             erroLocal="";
-            console.log ("Depois limpar erroLocal"+ erroLocal)
+            console.log ("Depois limpar erroLocal" + erroLocal)
             return;
         }
         console.log ("Depois IF erroLocal:" + erroLocal)
         // Firestore DB criar arrays de tags
-        const tagsArray = tagPost. split (",").map ((t)=>t.trim().toLowerCase());
-        console.log("tagsArray: "+tagsArray)
+        const tagsArray = tagPost.split (",").map ( (t) => t.trim().toLowerCase());
+        console.log("tagsArray: "+ tagsArray)
 
         //firestore DB checar se todos os valors
         if (!titulo|| !imagem || !tagPost || !corpo){
@@ -61,7 +66,7 @@ const CreatePost = () =>{
             titulo,
             imagem,
             corpo,
-            tagPost,
+            tagsArray,
             uid: user.uid,
             createdBy: user.displayName
         });
@@ -114,6 +119,7 @@ const CreatePost = () =>{
             Aguarde...
             </button>}
             {resposta.error && <p className='error'>{resposta.error}</p>}
+            {erroLocal && <p className='error'>{erroLocal}</p>}
         </form>
     </div>
     )

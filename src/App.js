@@ -45,12 +45,12 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path= '/' element={<About/>} />
+          <Route path= '/about' element={<About/>} />
           <Route path='/login' element=
           {!user ? <Login/>: <Navigate to= "/"/>} />
           <Route path='/register' element=
           {!user ? <Register/>: <Navigate to ="/"/>}/>
-          <Route path='/Post/create' element=
+          <Route path='/post/create' element=
           { user ? <CreatePost/>: <Navigate to = "/login"/>}/>
           <Route path='/dashboard' element= 
           {user ? <Dashboard/>: <Navigate to = "/login"/>}/>

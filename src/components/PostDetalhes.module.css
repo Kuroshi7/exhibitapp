@@ -1,0 +1,38 @@
+.post_detail { 
+    /*Afastar um post do outro*/
+    margin-bottom: 2em;
+}
+
+.post_detail img{
+    /*Largura maxima da imagem, mais posts visiveis na home*/
+    max-width: 600px;
+}
+
+.post_detail h2{
+    /*Afastar um h2 do outro*/
+    margin-bottom: 4em;
+}
+
+.post_detail .tags{
+    /*Afastar uma tag do outro*/
+    margin-bottom: 1.2em;
+    /* uma tag do lado da outra*/
+    display: flex;
+}
+
+.tags p{
+    margin-right: 5em;
+
+}
+
+.tags span{
+    /* nome da tag em negrito*/
+    font-weight: bold;
+}
+
+.createdBy {
+    font-style: italic;
+    color: #444;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}

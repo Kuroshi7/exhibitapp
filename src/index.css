@@ -74,6 +74,7 @@ input, textarea{
 }
 .botao.botao-outline{
   background-color: #000;
+  color: #aaa;
 }
 .botao.botao-danger:hover{
   background-color: #dc3545;
