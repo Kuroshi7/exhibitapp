@@ -19,6 +19,8 @@ const Home = () => {
     const handleSubmit =(e) => {
         e.preventDefault ()
         if (query) {
+            console.log(query)
+            //abrira nova pagina. 
             return navigate (`/search?q=${query}`)
         }
     };
@@ -28,7 +30,7 @@ const Home = () => {
             <form onSubmit={handleSubmit} className={style.search_form}>
                 <input type='text' placeholder=' ou busque por tags...' onChange={(e) =>
                 setQuery(e.target.value)}/>
-                <button className='botao botao-dark'> Pesquisar </button>
+                <button className="botao botao-dark"> Pesquisar </button>
 
             </form>
             <div>
@@ -40,7 +42,7 @@ const Home = () => {
                     <PostDetalhes key={p.id} post={p} />
                 ))}
                 
-                {postados && postados.length=== 0&&(
+                {postados && postados.length === 0&&(
                     <div className={style.noposts} >
                         <p> Não foram encontrados posts....</p>
                         <Link to = "/post/create"

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 
 const PostDetalhes = ({post}) => {
+    
+    
+   
     return (
         <div className={style.post_detail}>
             {/* Atributos definidos em CreatePost.js*/}
@@ -12,8 +15,8 @@ const PostDetalhes = ({post}) => {
             <p className={style.createdBy}>{post.createdBy}</p>
             <div className={style.tags}>
         {/* tagsArray do metodo inserirDocumento do CreatePost.js*/}
-            {post.tagsArray.map ((tag)=>(
-                <p key = {tag}><span>#</span>{tag}</p>
+            {post.tagsArray.map ((tag, i)=>(
+                <p key = {i}><span>#</span>{tag}</p>
             ))}
         </div>
         {/*uso de crase por usarmos template strings*/}

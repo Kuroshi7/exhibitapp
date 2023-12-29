@@ -31,7 +31,13 @@ export const useBuscarDocumentos = (docCollection, search = null, uid = null) =>
                 //meu teste
                 const collectionRef = await collection (db, docCollection)
                 //create a query against the collection.
-                const q1 = query (collectionRef, orderBy("createdAt", "desc"));
+                let q1;
+                //const q1 = query (collectionRef, orderBy("createdAt", "desc"));
+                if (search){
+                    q1 = await query (collectionRef, where ("tagsArray", "array-contains", search), orderBy("createdAt", "desc"));
+                }else{
+                    q1 = await query (collectionRef, orderBy("createdAt", "desc"));
+                }
                 const querySnapshot = await getDocs(q1);
                 //setDocumento (
                     setDocumento(

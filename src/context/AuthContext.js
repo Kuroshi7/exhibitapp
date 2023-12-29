@@ -12,5 +12,6 @@ export function AuthProviderFac ({children, value}){
 
 //Utilizado no navbar.js
 export function useAuthValueFac (){
+    
     return useContext (AuthContext);
 }
