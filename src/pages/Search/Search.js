@@ -1,4 +1,4 @@
-import style from './Search.module.css'
+import style from './Search.module.css';
 //hooks
 import { useBuscarDocumentos } from '../../hook/useBuscarDocumentos'
 import { useSearchURL } from '../../hook/useQueryURL';
@@ -14,7 +14,7 @@ const Search  =  () => {
     const searchParam =  queryX.get ("q")
     const queryResult = useBuscarDocumentos("posts", searchParam)
 
-    return <div>
+    return <div className={style.container}>
             <h2>Página de Pesquisas</h2>
             <p>{searchParam}</p>
             {/* Fragmento <>*/}

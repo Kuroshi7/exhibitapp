@@ -1,11 +1,15 @@
 .post_detail { 
     /*Afastar um post do outro*/
+    width: 100%;
+    max-width: 600px;
     margin-bottom: 2em;
 }
 
 .post_detail img{
     /*Largura maxima da imagem, mais posts visiveis na home*/
-    max-width: 600px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .post_detail h2{
